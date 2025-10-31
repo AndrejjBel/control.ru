@@ -22,8 +22,8 @@
 /modules/*/config/main-*.php
 
 # uploads images
-/uploads
-/uploads/*
+/public/uploads
+/public/uploads/*
 
 # phpunit itself is not needed
 phpunit.phar
