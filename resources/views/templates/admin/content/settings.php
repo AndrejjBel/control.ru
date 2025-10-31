@@ -73,6 +73,19 @@ if ($site_settings) {
                     </div>
                 </div>
 
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="pay_pass" class="form-label">Proxyapi secret key</label>
+                        <div class="input-group input-group-merge">
+                            <input type="password" id="secret_key" name="secret_key" class="form-control" autocomplete="new-password" value="<?php echo ($site_settings)? $site_settings->secret_key : '';?>">
+                            <div class="input-group-text" data-password="false">
+                                <span class="password-eye"></span>
+                            </div>
+                        </div>
+                        <span class="help-block"><small>Proxyapi secret key</small></span>
+                    </div>
+                </div>
+
                 <?php echo csrf_field();?>
 
                 <div class="mb-0">

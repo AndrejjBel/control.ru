@@ -7,7 +7,10 @@ use Hleb\Constructor\Data\View;
 
 class OpenaiController //extends Controller
 {
-    
+    private function secret_key(){
+        $site_settings = json_decode(site_settings('site_settings'));
+        return $secret_key = $site_settings->secret_key;
+    }
 
     public function request($engine, $prompt, $max_tokens){
 
