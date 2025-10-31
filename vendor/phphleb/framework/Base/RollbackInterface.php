@@ -1,0 +1,64 @@
+<?php
+/**
+ * @author  Foma Tuturov <fomiash@yandex.ru>
+ */
+
+namespace Hleb\Base;
+
+/**
+ * When this interface is found on the class being used
+ * in asynchronous mode, the rollback() method is called at the end of each request,
+ * which helps clean up the class state.
+ * You must manually add actions to reset/rollback class state to the method.
+ * It is worth considering that if a class has a parent class with this interface
+ * and the rollback() method is overridden, then it will be called twice.
+ * Therefore, if you need to perform an action to complete an asynchronous request,
+ * use it in the rollback() of the App\Bootstrap\ContainerFactory class.
+ * If the object is in a container, consider a more modern option with ResetInterface.
+ *
+ * При нахождении этого интерфейса у используемого класса
+ * в асинхронном режиме вызывается метод rollback() в конце каждого запроса,
+ * что способствует очистке состояния класса.
+ * Необходимо вручную добавить действия по очистке/откату состояния класса в метод.
+ * Стоит учесть, что если класс имеет родительский класс с этим интерфейсом,
+ * то метод rollback() будет вызван дважды.
+ * Поэтому, если необходимо выполнить действие по завершению асинхронного запроса,
+ * используйте его в rollback() класса App\Bootstrap\ContainerFactory.
+ * Если объект находится в контейнере, то рассмотрите более современный вариант с ResetInterface.
+ *
+ * @see ResetInterface
+ */
+interface RollbackInterface
+{
+    /**
+     * Used to clear class state at the end of a request for asynchronous mode.
+     * If an object of a derived class uses lazy loading in the container,
+     * then you must ensure that the fields involved have default values.
+     * Example:
+     *
+     * Используется для очистки состояния класса в конце запроса для асинхронного режима.
+     * Если объект наследуемого класса использует "ленивую" загрузку в контейнере,
+     * то необходимо убедиться, что задействованные поля имеют значения по умолчанию.
+     * Пример:
+     *
+     * ```php
+     * class Example implements \Hleb\Base\RollbackInterface
+     * {
+     *    private static ?Item $currentItem = null;
+     *
+     *    public function __construct(Item $item) {
+     *      self::$currentItem = $item;
+     *    }
+     *
+     *    #[\Override]
+     *    public static function rollback(): void {
+     *       self::$currentItem = null;
+     *    }
+     * }
+     *
+     * ```
+     * @see ResetInterface - to clear the state of objects in the container.
+     *                     - для очистки состояния объектов в контейнере.
+     */
+    public static function rollback(): void;
+}
