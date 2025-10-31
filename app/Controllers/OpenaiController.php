@@ -7,10 +7,7 @@ use Hleb\Constructor\Data\View;
 
 class OpenaiController //extends Controller
 {
-    private function secret_key(){
-        return $secret_key = 'Bearer sk-ptwX4z5VTHSuwXPYriwaO1pmux8oUpsL';
-        // return $secret_key = 'Bearer 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';
-    }
+    
 
     public function request($engine, $prompt, $max_tokens){
 
