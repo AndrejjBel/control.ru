@@ -682,6 +682,7 @@ function selected_order_status(value)  {
 
 function userSettings()  {
     const formSettings = document.querySelector('form.user-settings');
+    const formUserBio = document.querySelector('form.user-bio');
     const formPassword = document.querySelector('form.user-password');
     const warningWrap = document.querySelector('#warning-wrap');
     let url = '';
@@ -699,6 +700,24 @@ function userSettings()  {
             setTimeout(function(){
                 warningWrap.innerHTML = '';
                 btnSet.style.pointerEvents = '';
+            }, 5000);
+        });
+    }
+
+    if ( formUserBio ) {
+        const btnBio = formUserBio.elements.submit;
+        btnBio.addEventListener('click', (e) => {
+            e.preventDefault();
+            btnBio.style.pointerEvents = 'none';
+            let formData = new FormData(formUserBio);
+            formData.append('action', 'user_bio');
+            url = '/user-bio-edit';
+            fetchGenerale(url, formData);
+            warningWrap.innerHTML = '';
+            alertAction(warningWrap, 'Биометрические данные изменены', 'success');
+            setTimeout(function(){
+                warningWrap.innerHTML = '';
+                btnBio.style.pointerEvents = '';
             }, 5000);
         });
     }
@@ -864,12 +883,6 @@ document.addEventListener("DOMContentLoaded", function () {
             elem.addEventListener(ev, eventCalllback);
         }
     }
-});
-
-jQuery(document).ready(
-    $('#birthday input').datepicker({
-        language: "ru"
-    });
 });
 
 // function translit(word) {

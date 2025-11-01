@@ -212,10 +212,10 @@ function get_user_meta($user, $meta_key, $meta_value) {
     //     return $meta;
     // }
     if (array_key_exists($meta_key, $meta)) {
-        if ($meta_key == 'generale') {
-            return json_decode($meta[$meta_key])->$meta_value;
-        }
-        // return $meta[$user_meta];
+        // if ($meta_key == 'generale') {
+        //     return json_decode($meta[$meta_key])->$meta_value;
+        // }
+        return json_decode($meta[$meta_key])->$meta_value;
     }
 }
 

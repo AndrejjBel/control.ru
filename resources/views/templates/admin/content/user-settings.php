@@ -121,64 +121,75 @@ if ($data['mod'] == 'dashboard') {
                                         </ul>
                                     </form>
 
-                                    <form class="tab-pane user-settings" id="basictab2" role="tabpanel">
+                                    <form class="tab-pane user-bio" id="basictab2" role="tabpanel">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="row mb-3">
-                                                    <label class="col-md-3 col-form-label" for="first_name">Пол</label>
+                                                    <label class="col-md-3 col-form-label">Пол</label>
                                                     <div class="col-md-9">
-                                                        <input type="text"
-                                                            id="gender"
-                                                            name="gender"
-                                                            class="form-control"
-                                                            placeholder="Пол"
-                                                            value="<?php //echo ($user['gender'])? $user['gender'] : '';?>">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="form-check form-check-inline">
+                                                                <input type="radio" id="female" name="gender" class="form-check-input" value="female"<?php echo checked('female', get_user_meta($user, 'bio', 'gender'));?>>
+                                                                <label class="form-check-label" for="female">Женский</label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input type="radio" id="male" name="gender" class="form-check-input" value="male"<?php echo checked('male', get_user_meta($user, 'bio', 'gender'));?>>
+                                                                <label class="form-check-label" for="male">Мужской</label>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <label class="col-md-3 col-form-label" for="last_name">День рождения</label>
-                                                    <div id="birthday" class="col-md-9 position-relative">
-                                                        <input type="date"
+                                                    <div id="birthday" class="col-md-9">
+                                                        <input type="text"
                                                             id="birthday"
                                                             name="birthday"
-                                                            class="form-control"
-                                                            placeholder="День рождения"                                                            
-                                                            value="<?php //echo ($user['birthday'])? $user['birthday'] : '';?>">
+                                                            class="form-control air-datepicker-input"
+                                                            placeholder="День рождения"
+                                                            data-val="<?php echo date('Y-m-d', strtotime(get_user_meta($user, 'bio', 'birthday')));?>"
+                                                            readonly>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <label class="col-md-3 col-form-label" for="last_name">Рост</label>
                                                     <div class="col-md-9">
-                                                        <input type="text"
+                                                        <input type="number"
                                                             id="user_height"
                                                             name="user_height"
                                                             class="form-control"
-                                                            placeholder="Фамилия"
-                                                            value="<?php //echo ($user['user_height'])? $user['user_height'] : '';?>">
+                                                            placeholder="Рост"
+                                                            value="<?php echo get_user_meta($user, 'bio', 'user_height');?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
                                                     <label class="col-md-3 col-form-label" for="email">Вес</label>
                                                     <div class="col-md-9">
-                                                        <input type="email"
+                                                        <input type="number"
                                                             id="user_weight"
                                                             name="user_weight"
                                                             class="form-control"
                                                             placeholder="Вес"
-                                                            value="<?php //echo ($user['user_weight'])? $user['user_weight'] : '';?>">
+                                                            value="<?php echo get_user_meta($user, 'bio', 'user_weight');?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
                                                     <label class="col-md-3 col-form-label" for="phone">Уровень активности</label>
-                                                    <div class="col-md-9">
-                                                        <input type="text"
-                                                            id="activity_level"
-                                                            name="activity_level"
-                                                            class="form-control phone_mask"
-                                                            placeholder="Уровень активности"
-                                                            value="<?php //echo get_user_meta($user, 'generale', 'phone');?>">
+                                                    <div class="col-md-9 d-flex align-items-center">
+                                                        <div class="form-check form-check-inline">
+                                                            <input type="radio" id="short" name="activity_level" class="form-check-input" value="short"<?php echo checked('short', get_user_meta($user, 'bio', 'activity_level'));?>>
+                                                            <label class="form-check-label" for="short">Низкий</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input type="radio" id="average" name="activity_level" class="form-check-input" value="average"<?php echo checked('average', get_user_meta($user, 'bio', 'activity_level'));?>>
+                                                            <label class="form-check-label" for="average">Средний</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input type="radio" id="high" name="activity_level" class="form-check-input" value="high"<?php echo checked('high', get_user_meta($user, 'bio', 'activity_level'));?>>
+                                                            <label class="form-check-label" for="high">Высокий</label>
+                                                        </div>
                                                     </div>
                                                 </div>
 
@@ -189,7 +200,8 @@ if ($data['mod'] == 'dashboard') {
                                                         <textarea class="form-control"
                                                             id="exclude_products"
                                                             name="exclude_products"
-                                                            rows="5"><?php //echo get_user_meta($user, 'generale', 'description');?></textarea>
+                                                            rows="5"><?php echo get_user_meta($user, 'bio', 'exclude_products');?></textarea>
+                                                            <span class="help-block"><small>Перечислите продукты, которые хотите исключить при составлении меню питанияю Например: свинина, молоко</small></span>
                                                     </div>
                                                 </div>
                                             </div>

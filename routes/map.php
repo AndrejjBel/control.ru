@@ -116,6 +116,7 @@ Route::toGroup()->protect();
     Route::post('/user-admin-add')->controller(UserAddController::class, 'addUser');
     Route::post('/user-admin-edit')->controller(UserEditController::class, 'editUser');
     Route::post('/user-meta-edit')->controller(UserEditController::class, 'editUserMeta');
+    Route::post('/user-bio-edit')->controller(UserEditController::class, 'editUserBio');
     Route::post('/user-pass-edit')->controller(UserEditController::class, 'editUserPass');
     Route::post('/user-pass-edit-admin')->controller(UserEditController::class, 'adminEditUserPass');
     Route::post('/product-admin-add')->controller(ProductAddController::class, 'addProduct');

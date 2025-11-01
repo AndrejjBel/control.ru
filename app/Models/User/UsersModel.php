@@ -169,7 +169,7 @@ class UsersModel extends Model
         $sql_result = DB::run($sql, $params_ins)->fetch();
 
         if ($sql_result) {
-            $sql = "UPDATE usermeta SET meta_key = :meta_key, meta_value = :meta_value WHERE user_id = :user_id";
+            $sql = "UPDATE usermeta SET meta_value = :meta_value WHERE user_id = :user_id AND meta_key = :meta_key";
             DB::run($sql, $params);
             $result = 'update';
         } else {

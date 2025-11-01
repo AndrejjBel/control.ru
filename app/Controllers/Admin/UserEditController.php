@@ -70,7 +70,28 @@ class UserEditController extends Controller
             'meta_value' => json_encode($meta, JSON_UNESCAPED_UNICODE)
         ];
         $meta_key = UsersModel::updateUserMeta($params);
-        $ret = ['post' => $allPost, 'meta_id' => $meta_id];
+        $ret = ['post' => $allPost, 'meta_key' => $meta_key];
+        echo json_encode($ret, true);
+    }
+
+    public function editUserBio()
+    {
+        $allPost = Request::allPost();
+        $userId = userId();
+        $meta = [];
+        $meta['gender'] = (isset($allPost['gender'])) ? $allPost['gender'] : '';
+        $meta['birthday'] = $allPost['birthday'];
+        $meta['user_height'] = $allPost['user_height'];
+        $meta['user_weight'] = $allPost['user_weight'];
+        $meta['activity_level'] = (isset($allPost['activity_level'])) ? $allPost['activity_level'] : '';
+        $meta['exclude_products'] = $allPost['exclude_products'];
+        $params = [
+            'user_id' => $userId,
+            'meta_key' => 'bio',
+            'meta_value' => json_encode($meta, JSON_UNESCAPED_UNICODE)
+        ];
+        $meta_key = UsersModel::updateUserMeta($params);
+        $ret = ['post' => $allPost, 'meta_key' => $meta_key];
         echo json_encode($ret, true);
     }
 

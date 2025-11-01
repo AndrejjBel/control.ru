@@ -22,12 +22,16 @@
     <link href="../public/css/admin/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
     <link href="../public/css/admin/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="../public/css/admin/main.css?ver=<?php echo filemtime( HLEB_GLOBAL_DIR . '/public/css/admin/main.css' );?>" rel="stylesheet" type="text/css" />
+    <link href="../public/assetsnew/dist/admin.min.css?ver=<?php echo filemtime( HLEB_GLOBAL_DIR . '/public/assetsnew/dist/admin.min.css' );?>" rel="stylesheet" type="text/css" />
 
     <script src="../public/js/admin/vendor.min.js"></script>
     <script src="../public/js/admin/app.min.js" defer></script>
 
     <script src="../public/js/sortable/sortable.js" defer></script>
+    <script src="../public/assetsnew/dist/admin.min.js?ver=<?php echo filemtime( HLEB_GLOBAL_DIR . '/public/assetsnew/dist/admin.min.js' );?>" defer></script>
     <script src="../public/js/admin/admin.js?ver=<?php echo filemtime( HLEB_GLOBAL_DIR . '/public/js/admin/admin.js' );?>" defer></script>
+
+
 </head>
 
 <body>
