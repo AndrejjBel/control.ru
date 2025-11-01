@@ -41,7 +41,7 @@
                                         if ((int)$user['roles_mask'] != 0) {
                                             $user_role = rolesOptions()[(int)$user['roles_mask']];
                                         }
-                                        $user_balance = $user['balance'] - $currUser['expenses']; //($user['c_tokens']/1000*0.144 + $user['p_tokens']/1000*0.432);
+                                        $user_balance = $user['balance']; //- $currUser['expenses']; //($user['c_tokens']/1000*0.144 + $user['p_tokens']/1000*0.432);
                                     ?>
                                         <tr id="user<?php echo $user['id'];?>">
                                             <td><?php echo $user['id'];?></td>
@@ -120,11 +120,9 @@
 
     // $m = 'gpt-4o-mini-2024-07-18';
     // $type = 'completion';
-    //
-    // $cost = cost_of_request($m, $type);
-    //
+
     // echo '<pre>';
-    // var_dump($cost);
+    // var_dump($data);
     // echo '</pre>';
     ?>
 

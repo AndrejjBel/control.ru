@@ -12,7 +12,14 @@ class AuthMiddleware extends Middleware
     {
         $is_logged = AdminModel::is_logged();
         if ($is_logged) {
-            // $this->container->redirect()->to('/');
+            hl_redirect('/');
+        }
+    }
+
+    public function no_login()
+    {
+        $is_logged = AdminModel::is_logged();
+        if (!$is_logged) {
             hl_redirect('/');
         }
     }

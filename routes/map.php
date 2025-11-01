@@ -22,6 +22,7 @@ use App\Controllers\{
     DefaultController,
     ProductsController,
     FrontFetchController,
+    PagesController,
     Admin\AdminController,
     Admin\UsersController,
     Admin\UserAddController,
@@ -48,6 +49,10 @@ Route::get('/contact')->controller(HomeController::class, 'contact')->name('cont
 Route::get('/products')->controller(ProductsController::class)->name('products');
 Route::get('/products/{post_slug}')->controller(ProductsController::class, 'product')->name('product');
 Route::get('/cart')->controller(HomeController::class, 'cart')->name('cart');
+
+Route::toGroup()->middleware(AuthMiddleware::class, 'no_login');
+    Route::get('/info')->controller(PagesController::class, 'info')->name('info');
+Route::endGroup();
 
 Route::toGroup()->prefix('admin')->middleware(AdminMiddleware::class);
     Route::get('/')->controller(AdminController::class)->name('admin.generale');

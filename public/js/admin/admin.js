@@ -866,6 +866,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+jQuery(document).ready(
+    $('#birthday input').datepicker({
+        language: "ru"
+    });
+});
+
 // function translit(word) {
 // 	var converter = {
 // 		'а': 'a',    'б': 'b',    'в': 'v',    'г': 'g',    'д': 'd',

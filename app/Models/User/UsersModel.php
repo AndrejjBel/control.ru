@@ -150,4 +150,57 @@ class UsersModel extends Model
         $array = $sth->fetch(PDO::FETCH_ASSOC);
         return $array;
     }
+
+    public static function getUserNew()
+    {
+        $db = MyormModel::dbc();
+        $auth = new \Delight\Auth\Auth($db);
+        $user_id = $auth->getUserId();
+        $sql = "SELECT * FROM users WHERE id = :user_id";
+        return DB::run($sql, ['user_id' => $user_id])->fetchAll();
+    }
+
+    public static function updateUserMeta($params)
+    {
+        $params_ins = $params;
+        unset($params_ins['meta_value']);
+        $result = '';
+        $sql = "SELECT * FROM usermeta WHERE user_id = :user_id AND meta_key = :meta_key";
+        $sql_result = DB::run($sql, $params_ins)->fetch();
+
+        if ($sql_result) {
+            $sql = "UPDATE usermeta SET meta_key = :meta_key, meta_value = :meta_value WHERE user_id = :user_id";
+            DB::run($sql, $params);
+            $result = 'update';
+        } else {
+            $sql = "INSERT INTO usermeta(user_id, meta_key, meta_value) VALUES(:user_id, :meta_key, :meta_value)";
+            DB::run($sql, $params);
+            $sql_last_id =  DB::run("SELECT LAST_INSERT_ID() as last_id")->fetch();
+            $result = 'insert';
+        }
+        return $result;
+    }
+
+    public static function userAllDataMeta()
+    {
+        $db = MyormModel::dbc();
+        $auth = new \Delight\Auth\Auth($db);
+        $user_id = $auth->getUserId();
+
+        $sql_user = "SELECT * FROM users WHERE id = :user_id";
+        $user = DB::run($sql_user, ['user_id' => $user_id])->fetch();
+
+        $sql_user_meta = "SELECT * FROM usermeta WHERE user_id = :user_id";
+        $user_meta = DB::run($sql_user_meta, ['user_id' => $user_id])->fetchAll();
+
+        if ($user_meta) {
+            $um = [];
+            foreach ($user_meta as $key => $meta) {
+                $um[$meta['meta_key']] = $meta['meta_value'];
+            }
+            // array_push($user, ['meta' => $um]);
+            $user['meta'] = $um;
+        }
+        return $user;
+    }
 }

@@ -9,11 +9,12 @@ if (is_admin_allowed()) {
     $link_lk = '/admin';
 }
 $user_balance = $currUser['balance'] - $currUser['expenses']; //($currUser['c_tokens']/1000*0.144 + $currUser['p_tokens']/1000*0.432);
+$site_settings = json_decode(site_settings('site_settings'));
 ?>
 <header class="d-flex gap-1 align-items-center justify-content-between pb-3 mb-5 border-bottom">
     <a href="/" class="d-flex align-items-center text-body-emphasis text-decoration-none">
-        <img src="../public/images/logo-txtgen1.png" class="logo-img me-2" alt="">
-        <span class="fs-4">TxtGen</span>
+        <!-- <img src="../public/images/logo-txtgen1.png" class="logo-img me-2" alt=""> -->
+        <span class="fs-4"><?php echo $site_settings->site_title;?></span>
     </a>
     <?php if (is_login()) { ?>
         <div class="header-right d-flex gap-2 align-items-center">

@@ -24,6 +24,8 @@
 # uploads images
 /public/uploads
 /public/uploads/*
+/public/assetsnew
+/public/assetsnew/*
 
 # phpunit itself is not needed
 phpunit.phar

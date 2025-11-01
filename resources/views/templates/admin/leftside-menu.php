@@ -1,9 +1,12 @@
+<?php
+$site_settings = json_decode(site_settings('site_settings'));
+?>
 <div class="leftside-menu">
     <a href="/" class="logo logo-light">
         <span class="logo-lg">
             <span class="d-flex align-items-center">
-                <img src="../public/images/logo-txtgen1.png" class="me-2" alt="logo">
-                <span class="fs-4 text-light mt-1">TxtGen</span>
+                <!-- <img src="../public/images/logo-txtgen1.png" class="me-2" alt="logo"> -->
+                <span class="fs-4 text-light mt-1"><?php echo $site_settings->site_title;?></span>
             </span>
         </span>
         <span class="logo-sm">

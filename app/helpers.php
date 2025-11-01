@@ -83,13 +83,15 @@ function userAllData() {
 }
 
 function userAllDataNew() {
-    $db = MyormModel::dbc();
-    $auth = new \Delight\Auth\Auth($db);
-    $id = $auth->getUserId();
-    $sth = $db->prepare("SELECT users.*, usermeta.meta FROM users LEFT JOIN usermeta ON usermeta.user_id=users.id WHERE users.id = ?");
-    $sth->execute(array($id));
-    $array = $sth->fetchAll(PDO::FETCH_ASSOC);
-    return $array;
+    // $db = MyormModel::dbc();
+    // $auth = new \Delight\Auth\Auth($db);
+    // $id = $auth->getUserId();
+    // $sth = $db->prepare("SELECT users.*, usermeta.meta FROM users LEFT JOIN usermeta ON usermeta.user_id=users.id WHERE users.id = ?");
+    // $sth->execute(array($id));
+    // $array = $sth->fetchAll(PDO::FETCH_ASSOC);
+    // return $array;
+
+    return UsersModel::userAllDataMeta();
 }
 
 function userAllDataMeta() {
@@ -197,17 +199,23 @@ function usernameId($user_id) {
     return $user;
 }
 
-function get_user_meta($user, $user_meta) {
+function get_user_meta($user, $meta_key, $meta_value) {
     $meta = '';
     if (array_key_exists('meta', $user)) {
-        $meta = json_decode($user['meta'], true);
+        $meta = $user['meta'];
     }
-    if ($meta) {
-        if (array_key_exists($user_meta, $meta)) {
-            return $meta[$user_meta];
+    // if ($meta) {
+    //     if (array_key_exists($user_meta, $meta)) {
+    //         return $meta[$user_meta];
+    //     }
+    // } else {
+    //     return $meta;
+    // }
+    if (array_key_exists($meta_key, $meta)) {
+        if ($meta_key == 'generale') {
+            return json_decode($meta[$meta_key])->$meta_value;
         }
-    } else {
-        return $meta;
+        // return $meta[$user_meta];
     }
 }
 

@@ -64,13 +64,12 @@ class UserEditController extends Controller
                 'last_name'     => $allPost['last_name']
             ]
         );
-        $meta_id = UsersModel::setUserMeta(
-            [
-                'user_id'  => $userId,
-                'meta'     => json_encode($meta, JSON_UNESCAPED_UNICODE),
-                'meta2'     => json_encode($meta, JSON_UNESCAPED_UNICODE)
-            ]
-        );
+        $params = [
+            'user_id' => $userId,
+            'meta_key' => 'generale',
+            'meta_value' => json_encode($meta, JSON_UNESCAPED_UNICODE)
+        ];
+        $meta_key = UsersModel::updateUserMeta($params);
         $ret = ['post' => $allPost, 'meta_id' => $meta_id];
         echo json_encode($ret, true);
     }

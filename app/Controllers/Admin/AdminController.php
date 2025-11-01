@@ -7,6 +7,8 @@ use Hleb\Constructor\Data\View;
 use Hleb\Static\Request;
 use App\Models\Admin\AdminModel;
 
+use App\Models\User\UsersModel;
+
 class AdminController extends Controller
 {
     public function index(): View
@@ -41,7 +43,9 @@ class AdminController extends Controller
 
     public function user_settings(): View
     {
-        $user = userAllDataMeta();
+        // $user = userAllDataMeta();
+
+        $user = UsersModel::userAllDataMeta();
 
         return view('/admin/index',
             [
@@ -50,7 +54,8 @@ class AdminController extends Controller
                     'title' => 'User settings',
                     'description' => 'User settings description',
                     'mod' => 'admin',
-                    'user' => $user
+                    'user' => $user,
+                    // 'user_new' => $user_new
                 ]
             ]
         );
@@ -106,7 +111,7 @@ class AdminController extends Controller
 
     public function user_settings_dashboard(): View
     {
-        $user = userAllDataMeta();
+        $user = UsersModel::userAllDataMeta();
 
         return view('/admin/index',
             [

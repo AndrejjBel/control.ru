@@ -7,10 +7,13 @@ use Hleb\Constructor\Data\View;
 use App\Models\Admin\AdminUsersModel;
 use App\Models\Myorm\MyormModel;
 
+use App\Models\User\UsersModel;
+
 class UsersController extends Controller
 {
     public function index(): View
     {
+        $user = UsersModel::getUserNew();
         $user_all = AdminUsersModel::getUsersAll(1, 20);
         $current_user = AdminUsersModel::getUser();
 
@@ -22,7 +25,8 @@ class UsersController extends Controller
                     'description' => 'Admin users description',
                     'mod' => 'admin',
                     'user_all' => $user_all,
-                    'current_user' => $current_user
+                    'current_user' => $current_user,
+                    'user' => $user
                 ]
             ]
         );

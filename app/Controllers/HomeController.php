@@ -18,8 +18,8 @@ class HomeController extends Controller
                 'data'  => [
                     'body_classes' => 'home',
                     'temp_header' => 'header-pages',
-                    'title' => 'TxtGen - Генератор текстов',
-                    'description' => 'TxtGen description',
+                    'title' => 'Контроль калорий',
+                    'description' => 'Контроль калорий description',
                     'mod' => 'home',
                     'balance' => $balance
                 ]

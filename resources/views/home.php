@@ -48,6 +48,6 @@ $userId = userId();
 <?php
 insertTemplate('/templates/footer-pages', ['data' => $data]);
 
-echo '<pre>';
-var_dump(userAllDataNew());
-echo '</pre>';
+// echo '<pre>';
+// var_dump(userAllDataNew());
+// echo '</pre>';

@@ -13,13 +13,6 @@ if ($site_settings) {
             <div class="col-md-6">
                 <?php echo $copyright;?>
             </div>
-            <!-- <div class="col-md-6">
-                <div class="text-md-end footer-links d-none d-md-block">
-                    <a href="javascript: void(0);">About</a>
-                    <a href="javascript: void(0);">Support</a>
-                    <a href="javascript: void(0);">Contact Us</a>
-                </div>
-            </div> -->
         </div>
     </div>
 </footer>

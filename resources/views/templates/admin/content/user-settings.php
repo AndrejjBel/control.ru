@@ -36,7 +36,13 @@ if ($data['mod'] == 'dashboard') {
                                         </a>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <a href="#basictab2" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-1" aria-selected="false" role="tab" tabindex="-1">
+                                        <a href="#basictab2" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-1" aria-selected="true" role="tab">
+                                            <i class="ri-account-circle-line fw-normal fs-18 align-middle me-1"></i>
+                                            <span class="d-none d-sm-inline">Биометрические данные</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a href="#basictab3" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-1" aria-selected="false" role="tab" tabindex="-1">
                                             <i class="ri-lock-2-line fw-normal fs-18 align-middle me-1"></i>
                                             <span class="d-none d-sm-inline">Пароль</span>
                                         </a>
@@ -91,7 +97,7 @@ if ($data['mod'] == 'dashboard') {
                                                             name="phone"
                                                             class="form-control phone_mask"
                                                             placeholder="Телефон"
-                                                            value="<?php echo get_user_meta($user, 'phone');?>">
+                                                            value="<?php echo get_user_meta($user, 'generale', 'phone');?>">
                                                     </div>
                                                 </div>
 
@@ -102,7 +108,7 @@ if ($data['mod'] == 'dashboard') {
                                                         <textarea class="form-control"
                                                             id="description"
                                                             name="description"
-                                                            rows="5"><?php echo get_user_meta($user, 'description');?></textarea>
+                                                            rows="5"><?php echo get_user_meta($user, 'generale', 'description');?></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -115,7 +121,88 @@ if ($data['mod'] == 'dashboard') {
                                         </ul>
                                     </form>
 
-                                    <form class="tab-pane user-password" id="basictab2" role="tabpanel">
+                                    <form class="tab-pane user-settings" id="basictab2" role="tabpanel">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="row mb-3">
+                                                    <label class="col-md-3 col-form-label" for="first_name">Пол</label>
+                                                    <div class="col-md-9">
+                                                        <input type="text"
+                                                            id="gender"
+                                                            name="gender"
+                                                            class="form-control"
+                                                            placeholder="Пол"
+                                                            value="<?php //echo ($user['gender'])? $user['gender'] : '';?>">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label class="col-md-3 col-form-label" for="last_name">День рождения</label>
+                                                    <div id="birthday" class="col-md-9 position-relative">
+                                                        <input type="date"
+                                                            id="birthday"
+                                                            name="birthday"
+                                                            class="form-control"
+                                                            placeholder="День рождения"                                                            
+                                                            value="<?php //echo ($user['birthday'])? $user['birthday'] : '';?>">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label class="col-md-3 col-form-label" for="last_name">Рост</label>
+                                                    <div class="col-md-9">
+                                                        <input type="text"
+                                                            id="user_height"
+                                                            name="user_height"
+                                                            class="form-control"
+                                                            placeholder="Фамилия"
+                                                            value="<?php //echo ($user['user_height'])? $user['user_height'] : '';?>">
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label class="col-md-3 col-form-label" for="email">Вес</label>
+                                                    <div class="col-md-9">
+                                                        <input type="email"
+                                                            id="user_weight"
+                                                            name="user_weight"
+                                                            class="form-control"
+                                                            placeholder="Вес"
+                                                            value="<?php //echo ($user['user_weight'])? $user['user_weight'] : '';?>">
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label class="col-md-3 col-form-label" for="phone">Уровень активности</label>
+                                                    <div class="col-md-9">
+                                                        <input type="text"
+                                                            id="activity_level"
+                                                            name="activity_level"
+                                                            class="form-control phone_mask"
+                                                            placeholder="Уровень активности"
+                                                            value="<?php //echo get_user_meta($user, 'generale', 'phone');?>">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row mb-3">
+                                                    <label class="col-md-3 col-form-label" for="description">Исключить продукты</label>
+                                                    <div class="col-md-9">
+                                                        <textarea class="form-control"
+                                                            id="exclude_products"
+                                                            name="exclude_products"
+                                                            rows="5"><?php //echo get_user_meta($user, 'generale', 'description');?></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php echo csrf_field();?>
+                                        <ul class="pager wizard mb-0 list-inline">
+                                            <li class="next list-inline-item float-end">
+                                                <button type="button" name="submit" class="btn btn-info">Сохранить</button>
+                                            </li>
+                                        </ul>
+                                    </form>
+
+                                    <form class="tab-pane user-password" id="basictab3" role="tabpanel">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="row mb-3">
@@ -173,6 +260,12 @@ if ($data['mod'] == 'dashboard') {
         </div>
     </div>
 
-    <?php insertTemplate('/templates/admin/content/footer', ['data' => $data]);?>
+    <?php
+
+    // echo '<pre>';
+    // var_dump($user);
+    // echo '</pre>';
+
+    insertTemplate('/templates/admin/content/footer', ['data' => $data]);?>
 
 </div>
