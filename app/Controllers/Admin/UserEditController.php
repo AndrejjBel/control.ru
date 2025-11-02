@@ -80,7 +80,7 @@ class UserEditController extends Controller
         $userId = userId();
         $meta = [];
         $meta['gender'] = (isset($allPost['gender'])) ? $allPost['gender'] : '';
-        $meta['birthday'] = $allPost['birthday'];
+        $meta['birthday'] = date('Y-m-d', strtotime($allPost['birthday']));
         $meta['user_height'] = $allPost['user_height'];
         $meta['user_weight'] = $allPost['user_weight'];
         $meta['activity_level'] = (isset($allPost['activity_level'])) ? $allPost['activity_level'] : '';

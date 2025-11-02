@@ -147,7 +147,7 @@ if ($data['mod'] == 'dashboard') {
                                                             name="birthday"
                                                             class="form-control air-datepicker-input"
                                                             placeholder="День рождения"
-                                                            data-val="<?php echo date('Y-m-d', strtotime(get_user_meta($user, 'bio', 'birthday')));?>"
+                                                            data-val="<?php echo get_user_meta($user, 'bio', 'birthday');?>"
                                                             readonly>
                                                     </div>
                                                 </div>
