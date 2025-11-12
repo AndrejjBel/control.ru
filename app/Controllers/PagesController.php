@@ -8,9 +8,7 @@ use Hleb\Constructor\Data\View;
 class PagesController extends Controller
 {
     public function index(): View
-    {
-        return view('/admin/admin', ['title' => 'Home', 'description' => 'Home description']);
-    }
+    {}
 
     public function info(): View
     {

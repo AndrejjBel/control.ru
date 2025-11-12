@@ -83,14 +83,6 @@ function userAllData() {
 }
 
 function userAllDataNew() {
-    // $db = MyormModel::dbc();
-    // $auth = new \Delight\Auth\Auth($db);
-    // $id = $auth->getUserId();
-    // $sth = $db->prepare("SELECT users.*, usermeta.meta FROM users LEFT JOIN usermeta ON usermeta.user_id=users.id WHERE users.id = ?");
-    // $sth->execute(array($id));
-    // $array = $sth->fetchAll(PDO::FETCH_ASSOC);
-    // return $array;
-
     return UsersModel::userAllDataMeta();
 }
 

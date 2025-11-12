@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=PT+Sans+Narrow:wght@400;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Slab:wght@100..900&display=swap');
+
+:root, [data-theme="default"] {
+    --Gray-25: #FCFCFD;
+    --Gray-50: #F9FAFB;
+    --Gray-100: #F2F4F7;
+    --Gray-200: #E4E7EC;
+    --Gray-300: #D0D5DD;
+    --Gray-400: #98A2B3;
+    --Gray-500: #667085;
+    --Gray-600: #475467;
+    --Gray-700: #344054;
+    --Gray-800: #1D2939;
+    --Gray-900: #101828;
+
+    --Primary-25: #F5F8FF;
+    --Primary-50: #EEF4FF;
+    --Primary-100: #E0EAFF;
+    --Primary-200: #C7D7FE;
+    --Primary-300: #A4BCFD;
+    --Primary-400: #8098F9;
+    --Primary-500: #6375FF;
+    --Primary-600: #3B44E5;
+    --Primary-700: #3033D1;
+    --Primary-800: #1C21A6;
+    --Primary-900: #0E1683;
+
+    --Error-25: #FFFBFA;
+    --Error-50: #FEF3F2;
+    --Error-100: #FEE4E2;
+    --Error-200: #FECDCA;
+    --Error-300: #FDA29B;
+    --Error-400: #F97066;
+    --Error-500: #F04438;
+    --Error-600: #D92D20;
+    --Error-700: #B42318;
+    --Error-800: #912018;
+    --Error-900: #7A271A;
+
+    --Warning-25: #FFFCF5;
+    --Warning-50: #FFFAEB;
+    --Warning-100: #FEF0C7;
+    --Warning-200: #FEDF89;
+    --Warning-300: #FEC84B;
+    --Warning-400: #FDB022;
+    --Warning-500: #F79009;
+    --Warning-600: #DC6803;
+    --Warning-700: #B54708;
+    --Warning-800: #93370D;
+    --Warning-900: #7A2E0E;
+
+    --Success-25: #F6FEF9;
+    --Success-50: #ECFDF3;
+    --Success-100: #D1FADF;
+    --Success-200: #A6F4C5;
+    --Success-300: #6CE9A6;
+    --Success-400: #32D583;
+    --Success-500: #12B76A;
+    --Success-600: #039855;
+    --Success-700: #027A48;
+    --Success-800: #05603A;
+    --Success-900: #054F31;
+
+    --White: #FFFFFF;
+}

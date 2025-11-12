@@ -1,0 +1,48 @@
+.header-pages {
+    position: sticky;
+    top: 0;
+    background: var(--Gray-25);
+}
+
+.header-wrap-shadow {
+    box-shadow: 0 0 10px rgba(14, 22, 131, .2);
+}
+
+.container-header {
+    display: flex;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.site-brand {
+    flex: none;
+    color: var(--Primary-600);
+
+    &:hover {
+        color: var(--Primary-500);
+    }
+}
+
+.site-brand-title {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 24px;
+    margin: 0;
+}
+
+.primary-nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-left: auto;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.user-wrap {}

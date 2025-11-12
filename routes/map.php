@@ -131,6 +131,3 @@ Route::toGroup()->protect();
 Route::endGroup();
 
 Route::post('/logout')->controller(LogoutController::class);
-
-// Route::get('/admin-test')->controller(DefaultController::class)->name('admin-test');
-// Route::post('/admin-test')->controller(DefaultController::class);
