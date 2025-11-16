@@ -54,7 +54,7 @@ Route::toGroup()->middleware(AuthMiddleware::class, 'no_login');
     Route::get('/info')->controller(PagesController::class, 'info')->name('info');
 Route::endGroup();
 
-Route::toGroup()->prefix('admin')->middleware(AdminMiddleware::class);
+Route::toGroup()->prefix('/admin')->middleware(AdminMiddleware::class);
     Route::get('/')->controller(AdminController::class)->name('admin.generale');
     Route::get('/settings')->controller(AdminController::class, 'admin_settings')->name('admin.settings');
     Route::get('/user-settings')->controller(AdminController::class, 'user_settings')->name('admin.user-settings');

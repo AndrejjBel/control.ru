@@ -795,6 +795,20 @@ function cost_type_arr($model, $type) {
     return $cost[$model];
 }
 
+if (!function_exists('t')) {
+    /**
+     * Локализация по ключу $key.
+     * Поддерживает подмену подстрок по принципу {%name%} из именованного массива $params.
+     * echo t('hello_world'); // Автоопределяемый язык
+     * echo t('unique_visits', ['count' => 120]); // Автоопределяемый язык
+     * echo t('unique_visits', ['count' => 120], Translations::RU);
+     */
+    function t(string $key, array $params = [], ?string $lang = null): string
+    {
+        return \App\Translations::t($key, $params, $lang);
+    }
+}
+
 //Отправка в Телеграм
 function message_to_telegram($text, $chatid) {
     $tg_token = '5820237672:AAFAuLq18Zqy0kPW77E5Dk37_UH7xWpfgYM';

@@ -13,7 +13,3 @@ $site_settings = json_decode(site_settings('site_settings'));
 
 <?php
 insertTemplate('/templates/footer-pages', ['data' => $data]);
-
-// echo '<pre>';
-// var_dump(userAllDataNew());
-// echo '</pre>';
